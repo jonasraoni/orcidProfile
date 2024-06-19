@@ -48,7 +48,7 @@ class OrcidProfileSettingsForm extends Form
      * Constructor
      *
      * @param OrcidProfilePlugin $plugin
-     * @param int $contextId
+     * @param ?int $contextId
      */
     public function __construct($plugin, $contextId)
     {

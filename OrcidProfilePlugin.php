@@ -621,7 +621,7 @@ class OrcidProfilePlugin extends GenericPlugin
     {
         $request = Application::get()->getRequest();
         $context = $request->getContext();
-        $contextId = ($context == null) ? 0 : $context->getId();
+        $contextId = ($context == null) ? Application::SITE_CONTEXT_ID : $context->getId();
 
         $apiPath = $this->getSetting($contextId, 'orcidProfileAPIPath');
         return in_array($apiPath, [ORCID_API_URL_PUBLIC, ORCID_API_URL_MEMBER]) ? ORCID_URL : ORCID_URL_SANDBOX;
@@ -707,7 +707,7 @@ class OrcidProfilePlugin extends GenericPlugin
         $context = $request->getContext();
         $userId = $request->getUser()->getId();
         $user = Repo::user()->get($userId);
-        $contextId = ($context == null) ? 0 : $context->getId();
+        $contextId = ($context == null) ? Application::SITE_CONTEXT_ID : $context->getId();
         $targetOp = 'profile';
         $templateMgr->assign(
             [
@@ -984,7 +984,7 @@ class OrcidProfilePlugin extends GenericPlugin
     public function manage($args, $request)
     {
         $context = $request->getContext();
-        $contextId = ($context == null) ? 0 : $context->getId();
+        $contextId = ($context == null) ? Application::SITE_CONTEXT_ID : $context->getId();
 
         switch ($request->getUserVar('verb')) {
             case 'settings':
